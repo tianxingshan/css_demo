@@ -1,0 +1,18 @@
+#left{
+	background-color: #CCCCCC;
+	border: 1px solid #555555;
+	width: 100px;
+	height: 300px;
+	float: left;
+	
+}
+#right{
+	background-color: #555555;
+	border: 1px solid crimson;
+
+	height: 300px;
+	margin-left: 120px;
+	
+}
+
+

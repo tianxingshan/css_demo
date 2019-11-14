@@ -1,0 +1,13 @@
+#left{
+	background-color: #CCCCCC;
+	border: 2px solid red;
+	width: 100px;
+	height: 300px;
+	float: left;
+}
+
+#right{
+	background-color: #FFFFE0;
+	border: 2px solid #CCCCCC;
+	height: 300px;
+}

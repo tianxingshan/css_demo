@@ -1,0 +1,29 @@
+#main{
+	border: 2px solid black;
+	width: 80%;
+	height: 800px;
+	margin: 0px auto;
+}
+
+#receiveContent{
+	margin-top: 20px;
+	margin-left: 30px;
+	height: 300px;
+	width: 50%;
+	border: 2px solid black;
+	float: left;
+}
+#sendDiv{
+	position: absolute;
+	margin-top: 350px;
+	margin-left: 30px;
+	border: 2px solid black;
+	width: 50%;
+	height: 400px;
+}
+#sendContent{
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 70%;
+	height: 300px;
+}

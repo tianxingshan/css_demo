@@ -1,0 +1,19 @@
+#left{
+	background-color: #333333;
+	border: 2px solid #FF0000;
+	width: 300px;
+	height: 300px;
+	float: left;
+}
+#right{
+	background-color: #FFFFE0;
+	border: 2px solid #FFFFE0;
+	height:300px;
+	width: 300px;
+	float: left;
+}
+
+#layout{
+	margin: 50px auto;
+	width:608px;
+}
