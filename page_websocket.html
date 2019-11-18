@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js" ></script>
+	<link rel="stylesheet" href="css/customer.css" />
+	<title>客户01的页面</title>
+</head>
+<body>
+<h5 style="text-align: center;">消息推送测试页面</h5>
+	<div id="main">
+		<div><span id="receiveContent"></span></div>
+		<div id="sendDiv">
+			<textarea id="sendContent"></textarea>
+			<button id="sendButton" onclick="send()" type="button">发送</button>
+		</div>
+
+	</div>
+</body>
+	
+<script>
+let websocket = null;
+let LData = {};
+
+//判断当前浏览器是否支持WebSocket
+if('WebSocket' in window) {
+	websocket = new WebSocket("ws://localhost:8066/kongque-message-push/ws/uid_01");
+	console.log("浏览器支持websocket,且开始连接后台");
+} else {
+	alert('当前浏览器不支持\n请更换浏览器');
+};
+
+//发送消息
+function send() {
+	var content = $('#sendContent').val();
+	LData['content'] = content;
+	console.log(content)
+	websocket.send(JSON.stringify(LData));
+	$('#sendContent').val("");
+};
+
+//接收到消息的回调方法
+websocket.onmessage = function(event) {
+	let data = event.data;
+	console.log(data);
+	$('#receiveContent').append("<li>"+JSON.parse(data).content+"</li>"+"<br/>");
+};
+
+ //连接成功建立的回调方法
+    websocket.onopen = function () {
+        console.log("onopen...");
+    };
+
+    //连接关闭的回调方法
+    websocket.onclose = function () {
+        console.log("onclose...");
+    };
+
+    //连接发生错误的回调方法
+    websocket.onerror = function () {
+        alert("连接服务器失败，请刷新页面重试")
+    };
+
+    //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+    window.onbeforeunload = function () {
+        closeWebSocket();
+    };
+
+    //关闭WebSocket连接
+    function closeWebSocket() {
+        websocket.close();
+    }
+
+</script>
+</html>
