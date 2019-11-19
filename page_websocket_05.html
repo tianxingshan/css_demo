@@ -45,7 +45,8 @@ function send() {
 websocket.onmessage = function(event) {
 	let data = event.data;
 	console.log(data);
-	$('#receiveContent').append("<li>"+data+"</li>"+"<br/>");
+
+	$('#receiveContent').append("<li>"+JSON.stringify(JSON.parse(data).messageList)+"</li>"+"<br/>");
 };
 
  //连接成功建立的回调方法

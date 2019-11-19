@@ -9,7 +9,7 @@
 	<title>客户B的页面</title>
 </head>
 <body>
-<h5>B客户端(客服)</h5>
+<h5 style="text-align: center;">B客户端(模拟客服)</h5>
 	<div id="main">
 		<div><span id="receiveContent"></span></div>
 		<div id="sendDiv">
@@ -38,6 +38,7 @@ function send() {
 	LData['content'] = content;
 	console.log(content)
 	websocket.send(JSON.stringify(LData));
+	$('#sendContent').val("");
 };
 
 //接收到消息的回调方法
